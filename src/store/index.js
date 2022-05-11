@@ -1,4 +1,5 @@
 import {createStore} from 'vuex';
+import testData from '@/assets/test-data.json'
 
 
 export default createStore({
@@ -12,7 +13,10 @@ export default createStore({
             fetch('http://hjlhjlhjl.xyz:8070/uniFunction/findAll')
                 .then(response => response.json())
                 .then(json => context.commit('FETCH_SCHOOL_INFO', json))
-                .catch(err => console.log(err));
+                .catch(err => {
+                    console.log(err);
+                    context.commit('FETCH_SCHOOL_INFO', testData);
+                });
         }
     },
     mutations: {

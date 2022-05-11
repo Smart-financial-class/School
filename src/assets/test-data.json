@@ -1,0 +1,659 @@
+[
+  {
+    "UniId": 14,
+    "UniName": "测试大学",
+    "information": [],
+    "type": null,
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 15,
+    "UniName": "测试大学2",
+    "information": [
+      {
+        "informationId": 16,
+        "date": "",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 17,
+        "date": "",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 18,
+        "date": "",
+        "courseName": "数据结构",
+        "content": ""
+      },
+      {
+        "informationId": 19,
+        "date": "",
+        "courseName": "软件建模分析",
+        "content": ""
+      }
+    ],
+    "type": "综合类",
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 20,
+    "UniName": "黄大大学",
+    "information": [
+      {
+        "informationId": 23,
+        "date": "",
+        "courseName": "数学",
+        "content": ""
+      },
+      {
+        "informationId": 26,
+        "date": "",
+        "courseName": "英语",
+        "content": ""
+      },
+      {
+        "informationId": 103,
+        "date": "",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 107,
+        "date": "",
+        "courseName": "测试23",
+        "content": ""
+      },
+      {
+        "informationId": 108,
+        "date": "",
+        "courseName": "测试23",
+        "content": ""
+      },
+      {
+        "informationId": 120,
+        "date": "",
+        "courseName": "成功",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 28,
+    "UniName": "黄大学",
+    "information": [],
+    "type": "无敌",
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 29,
+    "UniName": "黄大学",
+    "information": [],
+    "type": "无敌",
+    "rank": "ji",
+    "sessionTest": null
+  },
+  {
+    "UniId": 30,
+    "UniName": null,
+    "information": [],
+    "type": "无敌",
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 31,
+    "UniName": null,
+    "information": [],
+    "type": "无敌",
+    "rank": null,
+    "sessionTest": null
+  },
+  {
+    "UniId": 32,
+    "UniName": "小学",
+    "information": [],
+    "type": "无敌",
+    "rank": "0",
+    "sessionTest": null
+  },
+  {
+    "UniId": 33,
+    "UniName": "",
+    "information": [],
+    "type": "无敌",
+    "rank": "",
+    "sessionTest": null
+  },
+  {
+    "UniId": 34,
+    "UniName": "",
+    "information": [],
+    "type": "无敌",
+    "rank": "",
+    "sessionTest": null
+  },
+  {
+    "UniId": 35,
+    "UniName": "",
+    "information": [],
+    "type": "无敌",
+    "rank": "",
+    "sessionTest": null
+  },
+  {
+    "UniId": 36,
+    "UniName": "头大",
+    "information": [
+      {
+        "informationId": 37,
+        "date": "",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 38,
+        "date": "",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 39,
+        "date": "",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 40,
+        "date": "",
+        "courseName": "计算机组成原理",
+        "content": ""
+      },
+      {
+        "informationId": 41,
+        "date": "",
+        "courseName": "数据结构",
+        "content": ""
+      },
+      {
+        "informationId": 42,
+        "date": "",
+        "courseName": "WEB应用程序设计",
+        "content": ""
+      },
+      {
+        "informationId": 43,
+        "date": "",
+        "courseName": "软件建模分析",
+        "content": ""
+      },
+      {
+        "informationId": 44,
+        "date": "",
+        "courseName": "企业税务管理与决策",
+        "content": ""
+      },
+      {
+        "informationId": 45,
+        "date": "",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 46,
+        "date": "",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 47,
+        "date": "",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      },
+      {
+        "informationId": 48,
+        "date": "",
+        "courseName": "海量数据存储和管理",
+        "content": ""
+      },
+      {
+        "informationId": 49,
+        "date": "",
+        "courseName": "云计算和分布式系统",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "经管类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 50,
+    "UniName": "及",
+    "information": [],
+    "type": "无敌",
+    "rank": "经管类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 51,
+    "UniName": "的",
+    "information": [
+      {
+        "informationId": 52,
+        "date": "第3学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 53,
+        "date": "第3学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 54,
+        "date": "第4学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 55,
+        "date": "第2学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 56,
+        "date": "第1学期",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 57,
+    "UniName": "及及",
+    "information": [
+      {
+        "informationId": 58,
+        "date": "第5学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 59,
+        "date": "第1学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 60,
+        "date": "第4学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 61,
+        "date": "第3学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 62,
+        "date": "第4学期",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      },
+      {
+        "informationId": 63,
+        "date": "第5学期",
+        "courseName": "海量数据存储和管理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 64,
+    "UniName": "下午",
+    "information": [
+      {
+        "informationId": 65,
+        "date": "第3学期",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 66,
+        "date": "第3学期",
+        "courseName": "数据结构",
+        "content": ""
+      },
+      {
+        "informationId": 67,
+        "date": "第2学期",
+        "courseName": "计算机组成原理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "经管类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 68,
+    "UniName": "路痴",
+    "information": [
+      {
+        "informationId": 69,
+        "date": "第1学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 70,
+        "date": "第1学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 71,
+        "date": "第1学期",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      },
+      {
+        "informationId": 72,
+        "date": "第1学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 73,
+        "date": "第1学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 74,
+        "date": "第1学期",
+        "courseName": "海量数据存储和管理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "综合类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 75,
+    "UniName": "中山大学",
+    "information": [
+      {
+        "informationId": 76,
+        "date": "第5学期",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 77,
+        "date": "第4学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 78,
+        "date": "第4学期",
+        "courseName": "数据结构",
+        "content": ""
+      },
+      {
+        "informationId": 79,
+        "date": "第4学期",
+        "courseName": "计算机组成原理",
+        "content": ""
+      },
+      {
+        "informationId": 80,
+        "date": "第3学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 81,
+    "UniName": "中南大学",
+    "information": [
+      {
+        "informationId": 82,
+        "date": "第3学期",
+        "courseName": "WEB应用程序设计",
+        "content": ""
+      },
+      {
+        "informationId": 83,
+        "date": "第3学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 84,
+        "date": "第3学期",
+        "courseName": "数据结构",
+        "content": ""
+      },
+      {
+        "informationId": 85,
+        "date": "第4学期",
+        "courseName": "计算机组成原理",
+        "content": ""
+      },
+      {
+        "informationId": 86,
+        "date": "第2学期",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      },
+      {
+        "informationId": 87,
+        "date": "第4学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 88,
+    "UniName": "大学",
+    "information": [],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 89,
+    "UniName": "策士",
+    "information": [
+      {
+        "informationId": 90,
+        "date": "第1学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 91,
+        "date": "第1学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 92,
+        "date": "第1学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 93,
+        "date": "第1学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "综合类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 95,
+    "UniName": "大大",
+    "information": [
+      {
+        "informationId": 96,
+        "date": "第1学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 97,
+        "date": "第1学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 98,
+        "date": "第1学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 99,
+        "date": "第1学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 102,
+    "UniName": "三大",
+    "information": [],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 110,
+    "UniName": "天天",
+    "information": [
+      {
+        "informationId": 111,
+        "date": "第1学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 112,
+        "date": "第1学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 113,
+        "date": "第1学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 114,
+        "date": "第1学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "理工类高校",
+    "sessionTest": null
+  },
+  {
+    "UniId": 121,
+    "UniName": "5.7测试",
+    "information": [
+      {
+        "informationId": 122,
+        "date": "第1学期",
+        "courseName": "风险管控和数字审计",
+        "content": ""
+      },
+      {
+        "informationId": 123,
+        "date": "第3学期",
+        "courseName": "财务基础",
+        "content": ""
+      },
+      {
+        "informationId": 124,
+        "date": "第3学期",
+        "courseName": "Python与人工智能",
+        "content": ""
+      },
+      {
+        "informationId": 125,
+        "date": "第2学期",
+        "courseName": "大数据与智能财务",
+        "content": ""
+      },
+      {
+        "informationId": 126,
+        "date": "第4学期",
+        "courseName": "数据库系统原理",
+        "content": ""
+      },
+      {
+        "informationId": 127,
+        "date": "第2学期",
+        "courseName": "计算机组成原理",
+        "content": ""
+      },
+      {
+        "informationId": 128,
+        "date": "第3学期",
+        "courseName": "海量数据存储和管理",
+        "content": ""
+      },
+      {
+        "informationId": 129,
+        "date": "第3学期",
+        "courseName": "公司战略和风险管理",
+        "content": ""
+      }
+    ],
+    "type": "无敌",
+    "rank": "经管类高校",
+    "sessionTest": null
+  }
+]
