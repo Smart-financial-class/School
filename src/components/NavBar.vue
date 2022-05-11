@@ -35,7 +35,7 @@ export default {
 </script>
 
 <script setup>
-import {onMounted, ref, watch} from "vue";
+import {ref, watch} from "vue";
 import logo from '@/assets/logo.png'
 import {useRoute} from 'vue-router';
 
@@ -60,6 +60,7 @@ watch(() => route.name, () => {
   margin: 10px;
   height: 30px;
   min-width: 240px;
+  max-width: 300px;
 }
 
 </style>
