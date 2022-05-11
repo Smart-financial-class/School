@@ -8,34 +8,36 @@
               <school-info :courses="school.information.map(value => value.courseName)"
                            :name="school.UniName"
                            :type="school.type"
+                           :activeCourses="activeCourses"
                            style="margin: 10px 0"
               />
             </el-col>
           </el-row>
         </el-scrollbar>
         <h2 v-else style="text-align: center">该页面展示开设了<b>智能财务</b>专业的高校的相关信息</h2>
-        <el-alert v-show="alert"
-                  :center="true"
-                  class="alert"
-                  title="暂无学校信息"
-                  type="error"
-                  @close="alert = false"/>
       </el-card>
     </el-col>
     <el-col :span="4">
       <el-space :size="20" direction="vertical" fill>
         <el-card class="choice" header="高校类别">
-          <el-checkbox-group v-model="categoriesActive">
-            <el-checkbox v-for="(category, i) in categories" :key="i" :label="category" style="display: block">
+          <el-checkbox v-model="cateSelectAll" :indeterminate="isIndeterminate" label="all" style="margin-bottom: 8px;"
+                       @change="handleCateSelectAllChange">
+            全选
+          </el-checkbox>
+          <el-checkbox-group v-model="activeCate" @change="handleCateActiveChange">
+            <el-checkbox v-for="(category, i) in categories" :key="i + category" :label="category"
+                         style="display: block">
               {{ category }}
             </el-checkbox>
           </el-checkbox-group>
         </el-card>
         <el-card class="choice" header="课程">
-          <el-checkbox-group disabled>
-            <el-checkbox :label="0">综合类学校</el-checkbox>
-            <el-checkbox :label="1">理工类学校</el-checkbox>
-            <el-checkbox :label="2">经管类学校</el-checkbox>
+          <el-checkbox-group v-model="activeCourses">
+            <el-scrollbar max-height="500px">
+              <el-checkbox v-for="(course, i) in courseInfo" :key="i + course" :label="course" style="display: block">
+                {{ course }}
+              </el-checkbox>
+            </el-scrollbar>
           </el-checkbox-group>
         </el-card>
       </el-space>
@@ -50,34 +52,52 @@ export default {
 </script>
 
 <script setup>
-import {ref, computed, watch, onMounted} from "vue";
+import {ref, computed, onBeforeMount} from "vue";
 import {useStore} from 'vuex';
 import testData from '@/assets/test-data.json'
 import SchoolInfo from "@/components/SchoolOverview/SchoolInfo";
 
-
+/* store */
 let store = useStore();
-// 全部学校信息
+/* 学校相关信息 */
 let schoolInfos = computed(() => store.state.schools);
-// 学校类别
-let categories = computed(() => [...new Set(schoolInfos.value.map(value => value.type))]);
-// 按学校类别分类的学校信息
 let schools = computed(() => {
-  return schoolInfos.value.filter(value => categoriesActive.value.includes(value.type));
+  return schoolInfos.value.filter(value => {
+    // 过滤符合类别的
+    let cate = activeCate.value.includes(value.type);
+    // 过滤含有目标课程的
+    let cnt = 0;
+    let course = value.information.map(val => val.courseName);
+    activeCourses.value.forEach(val => {
+      if (course.includes(val)) cnt++;
+    })
+    return cnt === activeCourses.value.length && cate;
+  });
 });
-// 选择了的学校类别
-let categoriesActive = ref(categories.value);
+/* 全部课程信息 */
+let activeCourses = ref([]);
+let courseInfo = computed(() => store.getters.courses);
 
-let alert = ref(false);
+
+/* 实现学校类别的选择 */
+let cateSelectAll = ref(false);
+let categories = computed(() => store.getters.schoolCategory);
+let activeCate = ref([]);
+let isIndeterminate = ref(false);
+
+function handleCateSelectAllChange(value) {
+  activeCate.value = value ? categories.value : [];
+  isIndeterminate.value = false
+}
+
+function handleCateActiveChange(value) {
+  cateSelectAll.value = value.length === categories.value.length;
+  isIndeterminate.value = value.length > 0 && value.length < categories.value.length;
+}
 
 
-watch(categoriesActive, () => {
-  if (schoolInfos.value.length === 0) {
-    alert.value = true;
-  }
-});
 // 挂载时异步获取学校信息
-onMounted(() => {
+onBeforeMount(() => {
   store.commit('FETCH_SCHOOL_INFO', testData);
 });
 </script>
@@ -85,13 +105,5 @@ onMounted(() => {
 <style scoped>
 .choice {
   max-height: 50%;
-}
-
-.alert {
-  width: 300px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  z-index: 10;
 }
 </style>

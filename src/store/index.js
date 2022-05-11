@@ -7,6 +7,20 @@ export default createStore({
             schools: []
         }
     },
+    getters: {
+        courses(state) {
+            let course = new Set();
+            for (let i of state.schools) {
+                for (let j of i.information) {
+                    course.add(j.courseName);
+                }
+            }
+            return [...course.values()];
+        },
+        schoolCategory(state) {
+            return [...new Set(state.schools.map(value => value.type))];
+        }
+    },
     actions: {
         getSchoolInfo(context) {
             fetch('http://hjlhjlhjl.xyz:8070/uniFunction/findAll')

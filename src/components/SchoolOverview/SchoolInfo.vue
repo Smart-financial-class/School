@@ -18,7 +18,9 @@
       </div>
     </template>
     <div class="courses">
-      <div v-for="(course, i) in cutedCourses" :key="i" class="course">{{ course }}</div>
+      <div v-for="(course, i) in Courses" :key="i" :class="{'text-active': activeCourses.includes(course)}"
+           class="course">{{ course }}
+      </div>
     </div>
   </el-card>
 </template>
@@ -46,9 +48,13 @@ let props = defineProps({
     required: true,
     type: Array,
   },
+  activeCourses: {
+    default: () => [],
+    type: Array,
+  }
 })
 
-let cutedCourses = computed(() => {
+let Courses = computed(() => {
   if (props.courses.length <= 9)
     return props.courses;
   else {
@@ -94,5 +100,9 @@ let cutedCourses = computed(() => {
 .course {
   width: 33%;
   min-width: 150px;
+}
+
+.text-active {
+  color: #5A9CF8;
 }
 </style>
