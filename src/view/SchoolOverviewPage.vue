@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20" justify="center" style="width: 65%;">
     <el-col :span="18">
-      <el-card style="height: 90%">
+      <el-card style="height: 100%">
         <el-scrollbar v-if="schools.length !== 0" max-height="800px">
           <el-row justify="center" style="margin-top: 20px;">
             <el-col v-for="school in schools" :key="school.UniId" :span="20">
