@@ -1,11 +1,10 @@
 import {createStore} from 'vuex';
-import testData from '@/assets/test-data.json'
 
 
 export default createStore({
     state() {
         return {
-            schools: testData
+            schools: []
         }
     },
     actions: {

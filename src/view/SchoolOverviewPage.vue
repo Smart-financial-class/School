@@ -52,6 +52,7 @@ export default {
 <script setup>
 import {ref, computed, watch, onMounted} from "vue";
 import {useStore} from 'vuex';
+import testData from '@/assets/test-data.json'
 import SchoolInfo from "@/components/SchoolOverview/SchoolInfo";
 
 
@@ -77,7 +78,7 @@ watch(categoriesActive, () => {
 });
 // 挂载时异步获取学校信息
 onMounted(() => {
-  store.dispatch('getSchoolInfo');
+  store.commit('FETCH_SCHOOL_INFO', testData);
 });
 </script>
 
