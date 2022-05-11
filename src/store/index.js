@@ -5,7 +5,7 @@ import testData from '@/assets/test-data.json'
 export default createStore({
     state() {
         return {
-            schools: []
+            schools: testData
         }
     },
     actions: {
@@ -15,7 +15,6 @@ export default createStore({
                 .then(json => context.commit('FETCH_SCHOOL_INFO', json))
                 .catch(err => {
                     console.log(err);
-                    context.commit('FETCH_SCHOOL_INFO', testData);
                 });
         }
     },
