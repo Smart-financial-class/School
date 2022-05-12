@@ -18,6 +18,7 @@ export default createRouter({
             component: MajorIntroducePage
         },
         {
+            redirect: '/overview/school',
             path: '/overview',
             name: 'overview',
             component: SchoolOverviewPage,
