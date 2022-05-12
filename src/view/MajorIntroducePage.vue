@@ -9,7 +9,7 @@
         </template>
         <el-row justify="center">
           <el-col :span="20">
-            <el-scrollbar max-height="600px" wrap-style="width: 95%">
+            <el-scrollbar max-height="675px" wrap-style="width: 95%">
               <el-timeline>
                 <el-timeline-item v-for="(school, i) in schoolTimeline"
                                   :key="i"

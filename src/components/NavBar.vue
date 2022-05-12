@@ -1,11 +1,11 @@
 <template>
   <el-menu :default-active="current" class="nav" mode="horizontal" router>
-    <el-image :src="logo" class="logo" fit="scale-down"/>
+    <el-image :src="logo" class="logo" fit="scale-down" @click="to('index')"/>
+    <el-menu-item :route="{name: 'index'}" index="index">
+      主页
+    </el-menu-item>
     <el-menu-item :route="{name: 'overview'}" index="overview">
       高校总览
-    </el-menu-item>
-    <el-menu-item :route="{name: 'introduce'}" index="introduce">
-      专业介绍
     </el-menu-item>
     <el-menu-item :route="{name: 'enroll'}" disabled index="enroll">
       招生就业
@@ -13,18 +13,6 @@
     <el-menu-item :route="{name: 'community'}" disabled index="community">
       社区
     </el-menu-item>
-    <el-sub-menu :show-timeout="100" disabled index="data">
-      <template #title>数据分析</template>
-      <el-menu-item :route="{name: 'overview'}" index="data/compare">
-        课程对比
-      </el-menu-item>
-      <el-menu-item :route="{name: 'overview'}" index="data/plan">
-        培养计划
-      </el-menu-item>
-      <el-menu-item :route="{name: 'overview'}" index="data/graph">
-        图表分析
-      </el-menu-item>
-    </el-sub-menu>
   </el-menu>
 </template>
 
@@ -37,15 +25,20 @@ export default {
 <script setup>
 import {ref, watch} from "vue";
 import logo from '@/assets/logo.png'
-import {useRoute} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 
 
 let current = ref('');
 let route = useRoute();
+let router = useRouter()
 
 watch(() => route.name, () => {
   current.value = route.name;
-})
+});
+
+function to(name) {
+  router.push({name});
+}
 </script>
 
 <style scoped>

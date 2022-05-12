@@ -1,15 +1,11 @@
 <template>
-  <h1>DataAnalysis</h1>
+  <h1>Charts</h1>
 </template>
 
 <script>
 export default {
-  name: "DataAnalysisPage"
+  name: "ChartsPage"
 }
-</script>
-
-<script setup>
-
 </script>
 
 <style scoped>
