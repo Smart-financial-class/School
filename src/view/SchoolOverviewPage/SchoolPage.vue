@@ -55,7 +55,7 @@ export default {
 <script setup>
 import {ref, computed} from "vue";
 import {useStore} from 'vuex';
-import SchoolInfo from "@/components/SchoolOverview/SchoolInfo";
+import SchoolInfo from "@/components/SchoolOverview/SchoolPage/SchoolInfo";
 
 /* store */
 let store = useStore();

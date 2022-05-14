@@ -22,7 +22,7 @@
                 课程对比
               </template>
             </el-menu-item>
-            <el-menu-item :route="{name: 'charts'}" disabled index="charts">
+            <el-menu-item :route="{name: 'charts'}" index="charts">
               <Histogram class="icon"/>
               <template #title>
                 图表分析
