@@ -21,7 +21,17 @@ export default {
 <script setup>
 import NavBar from "@/components/NavBar";
 import ParticlesConfig from '@/assets/particles.json';
+import {useStore} from 'vuex';
 import {loadFull} from "tsparticles";
+import {onBeforeMount} from "vue";
+import testData from "@/assets/test-data.json";
+
+
+let store = useStore();
+// 挂载时异步获取学校信息
+onBeforeMount(() => {
+  store.commit('School/FETCH_SCHOOL_INFO', testData);
+});
 
 // 粒子效果用到的函数
 const particlesInit = async (engine) => {
@@ -39,10 +49,8 @@ body {
 }
 
 .content {
-  min-width: 800px;
-  transform: translateY(60px);
-
-  height: 90%;
+  width: 100vw;
+  height: 100vh;
 }
 
 /*粒子效果样式*/

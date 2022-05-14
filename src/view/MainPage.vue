@@ -1,5 +1,5 @@
 <template>
-  <el-row justify="center" style="width: 100%">
+  <el-row justify="center" style="width: 100%; transform: translateY(60px)">
     <el-col :span="14">
       <el-card class="major" style="overflow: scroll; height: 92vh;">
         <template #header>

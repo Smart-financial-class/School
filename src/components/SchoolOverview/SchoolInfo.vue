@@ -1,8 +1,8 @@
 <template>
-  <el-card shadow="hover">
+  <el-card shadow="hover" @mouseout="hover = false" @mouseover="hover = true">
     <template #header>
       <div class="card-header">
-        <div class="title">
+        <div :class="{active: hover}" class="title">
           <div class="title-logo">
             <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
               <path d="M576 128v288l96-96 96 96V128h128v768H320V128h256zm-448 0h128v768H128V128z"
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <script setup>
-import {computed} from "vue";
+import {computed, ref} from "vue";
 // eslint-disable-next-line no-undef
 let props = defineProps({
   logoSrc: String,
@@ -54,6 +54,8 @@ let props = defineProps({
   }
 })
 
+let hover = ref(false);
+
 let Courses = computed(() => {
   if (props.courses.length <= 9)
     return props.courses;
@@ -69,6 +71,10 @@ let Courses = computed(() => {
 <style scoped>
 .el-card:deep(.el-card__header) {
   padding: 12px 10px;
+}
+
+.active {
+  color: #5A9CF8;
 }
 
 .card-header {

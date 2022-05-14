@@ -1,7 +1,7 @@
 import {createRouter, createWebHashHistory} from 'vue-router'
 
 import SchoolOverviewPage from "@/view/SchoolOverviewPage/SchoolOverviewPage";
-import MajorIntroducePage from "@/view/MajorIntroducePage";
+import MainPage from "@/view/MainPage";
 import EnrollAndEmploymentPage from "@/view/EnrollAndEmploymentPage";
 import CommunityPage from "@/view/CommunityPage";
 // import ComparePage from "@/view/DataAnalysisPage/ComparePage";
@@ -15,7 +15,7 @@ export default createRouter({
         {
             path: '/',
             name: 'index',
-            component: MajorIntroducePage
+            component: MainPage
         },
         {
             redirect: '/overview/school',

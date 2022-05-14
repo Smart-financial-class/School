@@ -17,6 +17,13 @@ export default {
         },
         schoolCategory(state) {
             return [...new Set(state.schools.map(value => value.type))];
+        },
+        schoolNames(state) {
+            let data = [];
+            state.schools.forEach(value => {
+                data.push({key: value.UniId, label: value.UniName});
+            });
+            return data;
         }
     },
     actions: {

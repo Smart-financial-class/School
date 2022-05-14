@@ -1,9 +1,9 @@
 <template>
   <div class="overview-root">
-    <el-card style="width: 80%">
+    <el-card style="width: 80%;">
       <el-row :gutter="10">
         <el-col :span="4" style="height: 800px">
-          <el-menu default-active="school" router style="min-height: 100%">
+          <el-menu router style="min-height: 100%">
             <el-menu-item :route="{name: 'school'}" index="school">
               <svg class="icon" data-v-ba633cb8="" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -64,6 +64,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  transform: translateY(20px);
 }
 
 .icon {

@@ -53,9 +53,8 @@ export default {
 </script>
 
 <script setup>
-import {ref, computed, onBeforeMount} from "vue";
+import {ref, computed} from "vue";
 import {useStore} from 'vuex';
-import testData from '@/assets/test-data.json'
 import SchoolInfo from "@/components/SchoolOverview/SchoolInfo";
 
 /* store */
@@ -99,10 +98,6 @@ function handleCateActiveChange(value) {
 }
 
 
-// 挂载时异步获取学校信息
-onBeforeMount(() => {
-  store.commit('School/FETCH_SCHOOL_INFO', testData);
-});
 </script>
 
 <style scoped>
