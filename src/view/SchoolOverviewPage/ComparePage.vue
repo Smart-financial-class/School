@@ -5,15 +5,15 @@
     <el-transfer v-model="selectedSchoolId" :data="schoolNames" :titles="['待比较高校', '需比较高校']" filter-placeholder="搜索学校"
                  filterable/>
     <div class="buttons">
-      <el-button :disabled="selectedSchoolId.length === 0" plain type="primary" @click="dialog = true">
+      <el-button :disabled="selectedSchoolId.length === 0" plain type="primary" @click="isDialogOpen = true">
         按课程开展种类对比
       </el-button>
-      <el-button disabled plain type="primary" @click="dialog = true">
+      <el-button disabled plain type="primary" @click="isDialogOpen = true">
         按课程开展时间对比
       </el-button>
     </div>
   </div>
-  <el-dialog v-model="dialog" :show-close="false" center width="60%">
+  <el-dialog v-model="isDialogOpen" :show-close="false" center width="60%">
     <template #title>
       <el-input v-model="courseSearchStr" placeholder="搜索课程"/>
     </template>
@@ -68,7 +68,7 @@ let selectedSchool = computed(() => {
   return schools.value.filter(val => selectedSchoolId.value.indexOf(val.UniId) !== -1);
 });
 
-let dialog = ref(false);
+let isDialogOpen = ref(false);
 
 let courses = computed(() => store.getters["School/courses"]);
 
@@ -100,6 +100,10 @@ watch(selectedSchool, () => {
       ...isHad,
     });
   });
+
+  if (selectedSchool.value.length === 0) {
+    isDialogOpen.value = false;
+  }
 });
 
 function removeTargetColumn(index) {
