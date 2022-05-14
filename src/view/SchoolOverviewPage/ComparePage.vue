@@ -1,16 +1,16 @@
 <template>
   <h1 style="text-align: center">在这个页面,你可以进行高校间开展课程的对比</h1>
   <el-divider/>
-  <div style="display:flex; justify-content: center; align-items: center; flex-direction: column;">
+  <div style="display:flex; justify-content: center; align-items: center; flex-direction: column; height: 600px">
     <el-transfer v-model="selectedSchoolId" :data="schoolNames" :titles="['待比较高校', '需比较高校']" filter-placeholder="搜索学校"
                  filterable/>
     <div class="buttons">
       <el-button :disabled="selectedSchoolId.length === 0" plain type="primary" @click="isDialogOpen = true">
         按课程开展种类对比
       </el-button>
-      <el-button disabled plain type="primary" @click="isDialogOpen = true">
-        按课程开展时间对比
-      </el-button>
+      <!--      <el-button disabled plain type="primary" @click="isDialogOpen = true">-->
+      <!--        按课程开展时间对比-->
+      <!--      </el-button>-->
     </div>
   </div>
   <el-dialog v-model="isDialogOpen" :show-close="false" center width="60%">

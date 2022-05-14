@@ -5,15 +5,7 @@
         <el-col :span="4" style="height: 800px">
           <el-menu router style="min-height: 100%">
             <el-menu-item :route="{name: 'school'}" index="school">
-              <svg class="icon" data-v-ba633cb8="" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M224 128v704h576V128H224zm-32-64h640a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32z"
-                    fill="currentColor"></path>
-                <path d="M64 832h896v64H64zm256-640h128v96H320z" fill="currentColor"></path>
-                <path
-                    d="M384 832h256v-64a128 128 0 1 0-256 0v64zm128-256a192 192 0 0 1 192 192v128H320V768a192 192 0 0 1 192-192zM320 384h128v96H320zm256-192h128v96H576zm0 192h128v96H576z"
-                    fill="currentColor"></path>
-              </svg>
+              <School class="icon"/>
               <template #title>
                 高校概览
               </template>
@@ -30,11 +22,8 @@
                 课程对比
               </template>
             </el-menu-item>
-            <el-menu-item :route="{name: 'charts'}" index="charts">
-              <svg class="icon" data-v-ba633cb8="" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                <path d="M416 896V128h192v768H416zm-288 0V448h192v448H128zm576 0V320h192v576H704z"
-                      fill="currentColor"></path>
-              </svg>
+            <el-menu-item :route="{name: 'charts'}" disabled index="charts">
+              <Histogram class="icon"/>
               <template #title>
                 图表分析
               </template>
@@ -56,6 +45,7 @@ export default {
 </script>
 
 <script setup>
+import {School, Histogram} from '@element-plus/icons-vue'
 </script>
 
 <style scoped>
