@@ -87,6 +87,7 @@ let Courses = computed(() => {
 
 .title {
   display: flex;
+  transition: all 0.5s ease;
 }
 
 .title-text {
@@ -106,6 +107,7 @@ let Courses = computed(() => {
 .course {
   width: 33%;
   min-width: 150px;
+  transition: all 0.3s ease;
 }
 
 .text-active {

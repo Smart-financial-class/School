@@ -3,17 +3,20 @@
     <el-col :span="18">
       <el-scrollbar v-if="schools.length !== 0" max-height="780px">
         <el-row justify="center" style="margin-top: 20px;">
-          <el-col v-for="school in schools" :key="school.UniId" :span="20">
-            <school-info :courses="school.information.map(value => value.courseName)"
-                         :name="school.UniName"
-                         :type="school.type"
-                         :activeCourses="activeCourses"
-                         style="margin: 10px 0"
-            />
-          </el-col>
+          <transition-group>
+            <el-col v-for="(school, i) in schools" :key="school.UniId" :span="20" :data-index="i"
+                    :style="{transitionDelay: '' + i * 30 + 'ms'}">
+              <school-info :courses="school.information.map(value => value.courseName)"
+                           :name="school.UniName"
+                           :type="school.type"
+                           :activeCourses="activeCourses"
+                           style="margin: 10px 0"
+              />
+            </el-col>
+          </transition-group>
         </el-row>
-        </el-scrollbar>
-        <h2 v-else style="text-align: center">该页面展示开设了<b>智能财务</b>专业的高校的相关信息</h2>
+      </el-scrollbar>
+      <h2 v-else style="text-align: center">该页面展示开设了<b>智能财务</b>专业的高校的相关信息</h2>
     </el-col>
     <el-col :span="6">
       <el-space :size="20" direction="vertical" fill>
@@ -82,9 +85,9 @@ let courses = computed(() => {
 
 
 /* 实现学校类别的选择 */
-let cateSelectAll = ref(false);
+let cateSelectAll = ref(true);
 let categories = computed(() => store.getters["School/schoolCategory"]);
-let activeCate = ref([]);
+let activeCate = ref(categories.value);
 let isIndeterminate = ref(false);
 
 function handleCateSelectAllChange(value) {
@@ -97,11 +100,25 @@ function handleCateActiveChange(value) {
   isIndeterminate.value = value.length > 0 && value.length < categories.value.length;
 }
 
-
 </script>
 
 <style scoped>
 .choice {
   min-width: 33%;
+}
+
+.v-enter-active, .v-leave-active {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+.v-enter-from, .v-leave-to {
+  opacity: 0;
+  transform: translateX(30%);
+}
+
+.v-enter, .v-leave {
+  opacity: 1;
 }
 </style>

@@ -11,22 +11,24 @@
           <el-col :span="20">
             <el-scrollbar max-height="675px" wrap-style="width: 95%">
               <el-timeline>
-                <el-timeline-item v-for="(school, i) in schoolTimeline"
-                                  :key="i"
-                                  :color="active[i] ? '#60A0F8' : ''"
-                                  :size="active[i] ? 'large' : 'normal'"
-                                  :timestamp="school.timestamp"
-                                  center
-                                  placement="top"
-                                  @mouseout="mouseout(i)"
-                                  @mouseover="mouseover(i)">
-                  <el-card :shadow="active[i] ? 'always' : 'never'">
-                    <template #header>
-                      <h2><b :style="{color: active[i] ? '#709EF1' : '#000000'}">{{ school.name }}</b></h2>
-                    </template>
-                    {{ school.info }}
-                  </el-card>
-                </el-timeline-item>
+                <transition-group>
+                  <el-timeline-item v-for="(school, i) in schoolTimeline"
+                                    :key="i"
+                                    :color="active[i] ? '#60A0F8' : ''"
+                                    :size="active[i] ? 'large' : 'normal'"
+                                    :timestamp="school.timestamp"
+                                    center
+                                    placement="top"
+                                    @mouseout="mouseout(i)"
+                                    @mouseover="mouseover(i)">
+                    <el-card :shadow="active[i] ? 'always' : 'never'">
+                      <template #header>
+                        <h2><b :style="{color: active[i] ? '#709EF1' : '#000000'}">{{ school.name }}</b></h2>
+                      </template>
+                      {{ school.info }}
+                    </el-card>
+                  </el-timeline-item>
+                </transition-group>
               </el-timeline>
             </el-scrollbar>
           </el-col>
@@ -91,6 +93,9 @@ function mouseover(index) {
 function mouseout(index) {
   active[index] = false;
 }
+
 </script>
 <style scoped>
+
+
 </style>
