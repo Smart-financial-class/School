@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
     <el-col :span="18">
-      <el-scrollbar v-if="schools.length !== 0" max-height="780px">
+      <el-scrollbar v-show="schools.length !== 0" ref="scrollbar" max-height="780px">
         <el-row justify="center" style="margin-top: 20px;">
           <transition-group>
             <el-col v-for="(school, i) in schools" :key="school.UniId" :span="20" :data-index="i"
@@ -16,7 +16,7 @@
           </transition-group>
         </el-row>
       </el-scrollbar>
-      <h2 v-else style="text-align: center">该页面展示开设了<b>智能财务</b>专业的高校的相关信息</h2>
+      <h2 v-show="schools.length === 0" style="text-align: center">该页面展示开设了<b>智能财务</b>专业的高校的相关信息</h2>
     </el-col>
     <el-col :span="6">
       <el-space :size="20" direction="vertical" fill>
@@ -56,7 +56,7 @@ export default {
 </script>
 
 <script setup>
-import {ref, computed} from "vue";
+import {ref, computed, nextTick} from "vue";
 import {useStore} from 'vuex';
 import SchoolInfo from "@/components/SchoolOverview/SchoolPage/SchoolInfo";
 
@@ -83,19 +83,23 @@ let courses = computed(() => {
   return store.getters["School/courses"].filter(value => value.includes(searchInput.value));
 })
 
-
 /* 实现学校类别的选择 */
 let cateSelectAll = ref(true);
 let categories = computed(() => store.getters["School/schoolCategory"]);
 let activeCate = ref(categories.value);
 let isIndeterminate = ref(false);
+let scrollbar = ref(null);
 
 function handleCateSelectAllChange(value) {
+  nextTick(() => {
+    scrollbar.value.setScrollTop(0)
+  })
   activeCate.value = value ? categories.value : [];
   isIndeterminate.value = false
 }
 
 function handleCateActiveChange(value) {
+  scrollbar.value.setScrollTop(0)
   cateSelectAll.value = value.length === categories.value.length;
   isIndeterminate.value = value.length > 0 && value.length < categories.value.length;
 }
