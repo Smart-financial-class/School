@@ -8,9 +8,6 @@
       <el-button :disabled="selectedSchoolId.length === 0" plain type="primary" @click="isDialogOpen = true">
         按课程开展种类对比
       </el-button>
-      <!--      <el-button disabled plain type="primary" @click="isDialogOpen = true">-->
-      <!--        按课程开展时间对比-->
-      <!--      </el-button>-->
     </div>
   </div>
   <el-dialog v-model="isDialogOpen" :show-close="false" center width="60%">
@@ -43,49 +40,44 @@
 
 </template>
 
-<script>
-export default {
-  name: "ComparePage"
-}
-</script>
-
 <script setup>
 import {useStore} from 'vuex';
 import {computed, reactive, ref, watch} from "vue";
-import {CircleCloseFilled, CircleCheckFilled} from "@element-plus/icons-vue";
-
+import {CircleCheckFilled, CircleCloseFilled} from "@element-plus/icons-vue";
+// store
 let store = useStore();
 
+
+// 收集选择的学校ID
+let selectedSchoolId = ref([]);
+// 从 store 中取得所有学校名称
 let schoolNames = computed(() => {
   return store.getters["School/schoolNames"];
 });
-
+// 从 store 中取得所有学校的所有信息
 let schools = computed(() => store.state.School.schools);
-
-let selectedSchoolId = ref([]);
-
+// 根据选择的学校ID过滤学校信息
 let selectedSchool = computed(() => {
   return schools.value.filter(val => selectedSchoolId.value.indexOf(val.UniId) !== -1);
 });
 
 let isDialogOpen = ref(false);
 
+
+// 从 store 中获取所有学校的所有课程信息
 let courses = computed(() => store.getters["School/courses"]);
-
+// 课程对比表
 let tableData = [];
-
-function isHadCourse(school, courseName) {
-  return school.information.filter(value => value.courseName === courseName).length !== 0;
-}
-
+// 搜索课程
 let courseSearchStr = ref('');
+// 根据搜索的课程过滤课程对比表
 let selectedTableData = computed(() => {
-  console.log(tableData.filter(value => !courseSearchStr.value || value.course.includes(courseSearchStr.value)));
   return tableData.filter(value => !courseSearchStr.value || value.course.includes(courseSearchStr.value));
 })
-
+// 鼠标悬浮在表头时显示关闭按钮
 let tableColumnHover = reactive(new Array(selectedSchool.value.length).fill(false))
 
+// 监视选择的学校信息，当学校信息变化时生成课程对比表
 watch(selectedSchool, () => {
   tableData = [];
   courses.value.forEach(value => {
@@ -105,6 +97,10 @@ watch(selectedSchool, () => {
     isDialogOpen.value = false;
   }
 });
+
+function isHadCourse(school, courseName) {
+  return school.information.filter(value => value.courseName === courseName).length !== 0;
+}
 
 function removeTargetColumn(index) {
   selectedSchoolId.value.splice(index, 1);

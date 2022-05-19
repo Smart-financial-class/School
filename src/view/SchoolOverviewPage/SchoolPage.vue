@@ -49,19 +49,14 @@
   </el-row>
 </template>
 
-<script>
-export default {
-  name: "SchoolOverview"
-}
-</script>
-
 <script setup>
-import {ref, computed, nextTick} from "vue";
+import {computed, nextTick, ref} from "vue";
 import {useStore} from 'vuex';
 import SchoolInfo from "@/components/SchoolOverview/SchoolPage/SchoolInfo";
 
 /* store */
 let store = useStore();
+
 /* 学校相关信息 */
 let schools = computed(() => {
   return store.state.School.schools.filter(value => {
@@ -76,6 +71,7 @@ let schools = computed(() => {
     return cnt === activeCourses.value.length && cate;
   });
 });
+
 /* 课程信息 */
 let searchInput = ref('');
 let activeCourses = ref([]);
@@ -91,6 +87,7 @@ let isIndeterminate = ref(false);
 let scrollbar = ref(null);
 
 function handleCateSelectAllChange(value) {
+  // 当类别变动时，滚动到最上方
   nextTick(() => {
     scrollbar.value.setScrollTop(0)
   })
@@ -99,7 +96,10 @@ function handleCateSelectAllChange(value) {
 }
 
 function handleCateActiveChange(value) {
-  scrollbar.value.setScrollTop(0)
+  // 当类别变动时，滚动到最上方
+  nextTick(() => {
+    scrollbar.value.setScrollTop(0)
+  })
   cateSelectAll.value = value.length === categories.value.length;
   isIndeterminate.value = value.length > 0 && value.length < categories.value.length;
 }

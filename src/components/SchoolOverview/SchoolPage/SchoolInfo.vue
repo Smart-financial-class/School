@@ -25,14 +25,9 @@
   </el-card>
 </template>
 
-<script>
-export default {
-  name: "SchoolInfo"
-}
-</script>
-
 <script setup>
 import {computed, ref} from "vue";
+
 // eslint-disable-next-line no-undef
 let props = defineProps({
   logoSrc: String,
@@ -54,8 +49,11 @@ let props = defineProps({
   }
 })
 
+// 鼠标悬浮在卡片上的效果
 let hover = ref(false);
 
+
+// 学校课程信息
 let Courses = computed(() => {
   if (props.courses.length <= 9)
     return props.courses;

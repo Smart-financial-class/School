@@ -16,12 +16,6 @@
   </el-menu>
 </template>
 
-<script>
-export default {
-  name: "NavBar"
-}
-</script>
-
 <script setup>
 import {ref, watch} from "vue";
 import logo from '@/assets/logo.png'

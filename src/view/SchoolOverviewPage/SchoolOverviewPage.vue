@@ -38,15 +38,9 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: "SchoolOverviewPage"
-}
-</script>
 
 <script setup>
-import {School, Histogram} from '@element-plus/icons-vue'
-</script>
+import {Histogram, School} from '@element-plus/icons-vue'</script>
 
 <style scoped>
 .overview-root {

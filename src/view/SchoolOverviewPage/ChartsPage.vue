@@ -38,6 +38,7 @@ import {
 import VChart from "vue-echarts";
 import {ref} from "vue";
 
+// echarts
 use([
   CanvasRenderer,
   LineChart,
@@ -48,7 +49,9 @@ use([
   GridComponent,
 ]);
 
+// 图表数据
 const options = [
+  // 图表1
   {
     title: {
       text: "每年开设智能财务专业的数量",
@@ -71,6 +74,7 @@ const options = [
       formatter: "{b}年: {c}所"
     }
   },
+  // 图表2
   {
     title: {
       text: '2021年开设智能财务院校类别',
@@ -109,17 +113,21 @@ const options = [
   }
 ];
 const AnalysisResult = [
+  // 图表1 分析结果
   {
     res: '开展智能财务专业高校课程的学校逐年增加',
     reason: '智能财务适应疫情之下的社会需求'
   },
+  // 图表2 分析结果
   {
     res: '开展智能财务的高校中，综合类高校占比较高',
     reason: '智能财务设计财务方面的知识以及计算机方面的知识，综合类高校开展该专业有着天然的优势'
   }
 ]
 
+// 控制点击图表弹出对话框
 let isDialogOpen = ref(false);
+// 收集点击的哪个图表
 let selectedChart = ref(-1);
 
 function handleChartClick(selectedChartIndex) {

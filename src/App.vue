@@ -12,12 +12,6 @@
   </el-row>
 </template>
 
-<script>
-export default {
-  name: 'App',
-}
-</script>
-
 <script setup>
 import NavBar from "@/components/NavBar";
 import ParticlesConfig from '@/assets/particles.json';

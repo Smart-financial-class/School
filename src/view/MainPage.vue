@@ -38,12 +38,6 @@
   </el-row>
 </template>
 
-<script>
-export default {
-  name: "MajorIntroducePage"
-}
-</script>
-
 <script setup>
 import {reactive} from "vue";
 
