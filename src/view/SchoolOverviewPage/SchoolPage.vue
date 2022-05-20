@@ -3,7 +3,7 @@
     <el-col :span="18">
       <el-scrollbar v-show="schools.length !== 0" ref="scrollbar" max-height="780px">
         <el-row justify="center" style="margin-top: 20px;">
-          <transition-group>
+          <transition-group appear name="school">
             <el-col v-for="(school, i) in schools" :key="school.UniId" :span="20" :data-index="i"
                     :style="{transitionDelay: '' + i * 30 + 'ms'}">
               <school-info :courses="school.information.map(value => value.courseName)"
@@ -36,11 +36,13 @@
           <el-input v-model="searchInput" placeholder="搜索课程"/>
           <el-divider/>
           <el-checkbox-group v-model="activeCourses">
-            <el-scrollbar max-height="350px">
-              <el-checkbox v-for="(course, i) in courses" :key="i + course" :label="course"
-                           style="display: block; margin: 0;">
-                {{ course }}
-              </el-checkbox>
+            <el-scrollbar height="300px" max-height="350px">
+              <transition-group name="course">
+                <el-checkbox v-for="(course, i) in courses" :key="course" :label="course"
+                             :style="{transitionDelay: String(i * 15) + 'ms'}" style="display: block; margin: 0;">
+                  {{ course }}
+                </el-checkbox>
+              </transition-group>
             </el-scrollbar>
           </el-checkbox-group>
         </el-card>
@@ -111,18 +113,39 @@ function handleCateActiveChange(value) {
   min-width: 33%;
 }
 
-.v-enter-active, .v-leave-active {
+.school-enter-active, .school-leave-active {
   transition-property: all;
   transition-duration: 0.5s;
   transition-timing-function: ease;
 }
 
-.v-enter-from, .v-leave-to {
+.school-move {
+  transition: all 1s ease;
+}
+
+.school-enter-from, .school-leave-to {
   opacity: 0;
   transform: translateX(30%);
 }
 
-.v-enter, .v-leave {
+.school-enter, .school-leave {
   opacity: 1;
+}
+
+
+.course-enter-active, .course-leave-active {
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+.course-enter-from, .course-leave-to {
+  opacity: 0;
+  transform: scale(0.01);
+}
+
+.course-enter, .course-leave {
+  opacity: 1;
+  transform: scale(1);
 }
 </style>
