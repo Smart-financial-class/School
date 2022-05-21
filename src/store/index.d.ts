@@ -3,6 +3,6 @@
 import { SchoolState } from './School'
 
 export interface RootState {
-    School: SchoolState
+    SchoolState: SchoolState
 }
 

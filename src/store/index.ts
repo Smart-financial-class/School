@@ -2,11 +2,11 @@
 
 import Vuex, { StoreOptions } from 'vuex'
 import { RootState } from './index.d'
-import School from './School/index'
+import SchoolState from './School/index'
 
 const store: StoreOptions<RootState> = {
   modules: {
-    School
+    SchoolState
   }
 }
 export default new Vuex.Store<RootState>(store)
