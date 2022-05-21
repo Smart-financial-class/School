@@ -19,24 +19,13 @@
   </el-dialog>
 </template>
 
-<script>
-export default {
-  name: "ChartsPage"
-}
-</script>
-
-<script setup>
-import {use} from "echarts/core";
-import {CanvasRenderer} from "echarts/renderers";
-import {LineChart, PieChart} from "echarts/charts";
-import {
-  TitleComponent,
-  TooltipComponent,
-  LegendComponent,
-  GridComponent,
-} from "echarts/components";
+<script lang="ts" setup>
+import { use } from "echarts/core";
+import { CanvasRenderer } from "echarts/renderers";
+import { LineChart, PieChart } from "echarts/charts";
+import { GridComponent, LegendComponent, TitleComponent, TooltipComponent, } from "echarts/components";
 import VChart from "vue-echarts";
-import {ref} from "vue";
+import { Ref, ref } from "vue";
 
 // echarts
 use([
@@ -126,11 +115,11 @@ const AnalysisResult = [
 ]
 
 // 控制点击图表弹出对话框
-let isDialogOpen = ref(false);
+let isDialogOpen: Ref<boolean> = ref(false);
 // 收集点击的哪个图表
-let selectedChart = ref(-1);
+let selectedChart: Ref<number> = ref(-1);
 
-function handleChartClick(selectedChartIndex) {
+function handleChartClick(selectedChartIndex: number) {
   isDialogOpen.value = true;
   selectedChart.value = selectedChartIndex;
 }

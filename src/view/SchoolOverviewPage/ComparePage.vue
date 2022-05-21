@@ -40,48 +40,49 @@
 
 </template>
 
-<script setup>
-import {useStore} from 'vuex';
-import {computed, reactive, ref, watch} from "vue";
-import {CircleCheckFilled, CircleCloseFilled} from "@element-plus/icons-vue";
+<script lang="ts" setup>
+import { useStore } from 'vuex';
+import { computed, reactive, ref, watch } from "vue";
+import { CircleCheckFilled, CircleCloseFilled } from "@element-plus/icons-vue";
+import { School } from "@/store/School/index.d";
 // store
 let store = useStore();
 
 
 // 收集选择的学校ID
-let selectedSchoolId = ref([]);
+let selectedSchoolId = ref<number[]>([]);
 // 从 store 中取得所有学校名称
-let schoolNames = computed(() => {
+let schoolNames = computed<{ key: number, label: string }[]>(() => {
   return store.getters["School/schoolNames"];
 });
 // 从 store 中取得所有学校的所有信息
-let schools = computed(() => store.state.School.schools);
+let schools = computed<School[]>(() => store.state.School.schools);
 // 根据选择的学校ID过滤学校信息
-let selectedSchool = computed(() => {
-  return schools.value.filter(val => selectedSchoolId.value.indexOf(val.UniId) !== -1);
+let selectedSchool = computed<School[]>(() => {
+  return schools.value.filter((val: School) => selectedSchoolId.value.indexOf(val.UniId) !== -1);
 });
 
-let isDialogOpen = ref(false);
+let isDialogOpen = ref<boolean>(false);
 
 
 // 从 store 中获取所有学校的所有课程信息
-let courses = computed(() => store.getters["School/courses"]);
+let courses = computed<string[]>(() => store.getters["School/courses"]);
 // 课程对比表
-let tableData = [];
+let tableData: { course: string, [prop: string]: any }[] = [];
 // 搜索课程
-let courseSearchStr = ref('');
+let courseSearchStr = ref<string>('');
 // 根据搜索的课程过滤课程对比表
-let selectedTableData = computed(() => {
+let selectedTableData = computed<typeof tableData>(() => {
   return tableData.filter(value => !courseSearchStr.value || value.course.includes(courseSearchStr.value));
 })
 // 鼠标悬浮在表头时显示关闭按钮
-let tableColumnHover = reactive(new Array(selectedSchool.value.length).fill(false))
+let tableColumnHover = reactive<boolean[]>(new Array(selectedSchool.value.length).fill(false))
 
 // 监视选择的学校信息，当学校信息变化时生成课程对比表
 watch(selectedSchool, () => {
   tableData = [];
   courses.value.forEach(value => {
-    let isHad = {};
+    let isHad: { [prop: string]: boolean } = {};
 
     selectedSchool.value.forEach(val => {
       isHad[val.UniName] = isHadCourse(val, value)
@@ -98,11 +99,11 @@ watch(selectedSchool, () => {
   }
 });
 
-function isHadCourse(school, courseName) {
+function isHadCourse(school: School, courseName: string): boolean {
   return school.information.filter(value => value.courseName === courseName).length !== 0;
 }
 
-function removeTargetColumn(index) {
+function removeTargetColumn(index: number): void {
   selectedSchoolId.value.splice(index, 1);
 }
 

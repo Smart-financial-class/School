@@ -5,35 +5,35 @@
       id="tsparticles"
       :options="ParticlesConfig"
       :particlesInit="particlesInit"
-      :particlesLoaded="particlesLoaded"/>
+      :particlesLoaded="particlesLoaded"
+  />
 
   <el-row class="content" justify="center">
     <router-view/>
   </el-row>
 </template>
 
-<script setup>
-import NavBar from "@/components/NavBar";
-import ParticlesConfig from '@/assets/particles.json';
-import {useStore} from 'vuex';
-import {loadFull} from "tsparticles";
-import {onBeforeMount} from "vue";
+<script lang="ts" setup>
+import NavBar from "@/components/NavBar.vue";
+import ParticlesConfig from "@/assets/particles.json";
+import { useStore } from "vuex";
+import { loadFull } from "tsparticles";
+import { onBeforeMount } from "vue";
 import testData from "@/assets/test-data.json";
-
 
 let store = useStore();
 // 挂载时异步获取学校信息
 onBeforeMount(() => {
-  store.commit('School/FETCH_SCHOOL_INFO', testData);
+  store.commit("School/FETCH_SCHOOL_INFO", testData);
 });
 
 // 粒子效果用到的函数
-const particlesInit = async (engine) => {
+const particlesInit = async (engine: any) => {
   await loadFull(engine);
-}
-const particlesLoaded = async (container) => {
+};
+const particlesLoaded = async (container: any) => {
   console.log("Particles container loaded", container);
-}
+};
 </script>
 
 <style>

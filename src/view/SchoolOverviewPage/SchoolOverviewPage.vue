@@ -39,8 +39,8 @@
 </template>
 
 
-<script setup>
-import {Histogram, School} from '@element-plus/icons-vue'</script>
+<script lang="ts" setup>
+import { Histogram, School } from '@element-plus/icons-vue'</script>
 
 <style scoped>
 .overview-root {
