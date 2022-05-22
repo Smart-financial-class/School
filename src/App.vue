@@ -15,16 +15,15 @@
 
 <script lang="ts" setup>
 import NavBar from "@/components/NavBar.vue";
-import ParticlesConfig from "@/assets/particles.json";
-import { useStore } from "vuex";
+import ParticlesConfig from "@/assets/particles";
 import { loadFull } from "tsparticles";
 import { onBeforeMount } from "vue";
-import testData from "@/assets/test-data.json";
+import { useSchoolState } from "@/store/School";
 
-let store = useStore();
+let store = useSchoolState()
 // 挂载时异步获取学校信息
 onBeforeMount(() => {
-  store.commit("School/FETCH_SCHOOL_INFO", testData);
+  store.genTestData();
 });
 
 // 粒子效果用到的函数

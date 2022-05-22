@@ -41,22 +41,22 @@
 </template>
 
 <script lang="ts" setup>
-import { useStore } from 'vuex';
+import { useSchoolState } from "@/store/School";
+import { School } from '@/store/School/types'
 import { computed, reactive, ref, watch } from "vue";
 import { CircleCheckFilled, CircleCloseFilled } from "@element-plus/icons-vue";
-import { School } from "@/store/School/index.d";
 // store
-let store = useStore();
+let store = useSchoolState();
 
 
 // 收集选择的学校ID
 let selectedSchoolId = ref<number[]>([]);
 // 从 store 中取得所有学校名称
 let schoolNames = computed<{ key: number, label: string }[]>(() => {
-  return store.getters["School/schoolNames"];
+  return store.schoolNames;
 });
 // 从 store 中取得所有学校的所有信息
-let schools = computed<School[]>(() => store.state.School.schools);
+let schools = computed<School[]>(() => store.schools);
 // 根据选择的学校ID过滤学校信息
 let selectedSchool = computed<School[]>(() => {
   return schools.value.filter((val: School) => selectedSchoolId.value.indexOf(val.UniId) !== -1);
@@ -66,9 +66,9 @@ let isDialogOpen = ref<boolean>(false);
 
 
 // 从 store 中获取所有学校的所有课程信息
-let courses = computed<string[]>(() => store.getters["School/courses"]);
+let courses = computed<string[]>(() => store.courses);
 // 课程对比表
-let tableData: { course: string, [prop: string]: any }[] = [];
+let tableData: { course: string }[] = [];
 // 搜索课程
 let courseSearchStr = ref<string>('');
 // 根据搜索的课程过滤课程对比表

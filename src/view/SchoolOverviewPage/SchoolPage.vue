@@ -5,6 +5,7 @@
           v-show="schools.length !== 0"
           ref="scrollbar"
           max-height="780px"
+          style="width: 100%"
       >
         <el-row justify="center" style="margin-top: 20px">
           <transition-group appear name="school">
@@ -12,7 +13,7 @@
                 v-for="(school, i) in schools"
                 :key="school.UniId"
                 :data-index="i"
-                :span="20"
+                :span="18"
                 :style="{ transitionDelay: '' + i * 30 + 'ms' }"
             >
               <school-info
@@ -32,7 +33,7 @@
     </el-col>
     <el-col :span="6">
       <el-space :size="20" direction="vertical" fill>
-        <el-card class="choice" header="高校类别" shadow="never">
+        <el-card class="choice" header="高校类别" shadow="never" style="max-height: 250px">
           <el-checkbox
               v-model="cateSelectAll"
               :indeterminate="isIndeterminate"
@@ -64,13 +65,14 @@
               <transition-group name="course">
                 <el-checkbox
                     v-for="(course, i) in courses"
-                    :key="course"
+                    :key="i"
                     :label="course"
                     :style="{ transitionDelay: String(i * 15) + 'ms' }"
                     style="display: block; margin: 0"
                 >
                   {{ course }}
                 </el-checkbox>
+
               </transition-group>
             </el-scrollbar>
           </el-checkbox-group>
@@ -82,17 +84,18 @@
 
 <script lang="ts" setup>
 import { computed, nextTick, ref } from "vue";
-import { useStore } from "vuex";
+import { School } from "@/store/School/types";
+import { useSchoolState } from "@/store/School";
 import SchoolInfo from "@/components/SchoolOverview/SchoolPage/SchoolInfo.vue";
-import { School, SchoolState } from "@/store/School";
 import type { ElScrollbar } from "element-plus";
 
 /* store */
-let store = useStore<SchoolState>();
+let store = useSchoolState()
 
 /* 学校相关信息 */
+/* eslint-disable */
 let schools = computed<School[]>(() => {
-  return store.state.schools.filter((value) => {
+  return store.schools.filter(value => {
     // 过滤符合类别的
     let cate = activeCate.value.includes(value.type);
     // 过滤含有目标课程的
@@ -109,14 +112,14 @@ let schools = computed<School[]>(() => {
 let searchInput = ref<string>("");
 let activeCourses = ref<string[]>([]);
 let courses = computed<string[]>(() => {
-  return store.getters["School/courses"].filter((value: string) =>
+  return store.courses.filter((value: string) =>
       value.includes(searchInput.value)
   );
 });
 
 /* 实现学校类别的选择 */
 let cateSelectAll = ref<boolean>(true);
-let categories = computed<string[]>(() => store.getters["School/schoolCategory"]);
+let categories = computed<string[]>(() => store.schoolCategory);
 let activeCate = ref<string[]>(categories.value);
 let isIndeterminate = ref<boolean>(false);
 let scrollbar = ref<InstanceType<typeof ElScrollbar>>();
